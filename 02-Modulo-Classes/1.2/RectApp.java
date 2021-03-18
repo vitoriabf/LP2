@@ -23,11 +23,11 @@ class Rect {
     }
 
     int area() {
-        System.out.format("Area: %d\n", this.w * this.h);
         return this.w * this.h;
     }
 
     void drag(int dx, int dy) {
-        System.out.format("Objeto arrastado para a posicao: (%d, %d)\n", (this.x + dx), (this.y + dy));
+        this.x = this.x + dx;
+        this.y = this.y + dy;
     }
 }
