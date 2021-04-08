@@ -63,12 +63,12 @@ class PackFrame extends JFrame {
                     }
 
                     else if (evt.getKeyChar() == 'a') {
-                    	int centerX = rand.nextInt(350);
-                        int centerY = rand.nextInt(350);
-                        int radiusX = rand.nextInt(50);
-                        int radiusY = rand.nextInt(50);
-                        int length = rand.nextInt(50);
-                        int startAngle = rand.nextInt(360);
+                    	int x = rand.nextInt(350);
+                        int y = rand.nextInt(350);
+                        int w = rand.nextInt(50);
+                        int h = rand.nextInt(50);
+                        int startAngle = rand.nextInt(50);
+                        int endAngle = rand.nextInt(360);
                         int rFill = rand.nextInt(255);
                         int gFill = rand.nextInt(255);
                         int bFill = rand.nextInt(255);
@@ -76,7 +76,7 @@ class PackFrame extends JFrame {
                         int gDraw = rand.nextInt(255);
                         int bDraw = rand.nextInt(255);
 
-                    	figs.add(new Arc(centerX,centerY, radiusX,radiusY, length,startAngle, rFill,gFill,bFill, rDraw,gDraw,bDraw));
+                    	figs.add(new Arc(x,y, w,h, startAngle,endAngle, rFill,gFill,bFill, rDraw,gDraw,bDraw));
                         repaint();
                     }
                 }
