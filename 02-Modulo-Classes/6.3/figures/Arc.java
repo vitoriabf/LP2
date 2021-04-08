@@ -3,17 +3,15 @@ package figures;
 import java.awt.*;
 
 public class Arc extends Figure {
-    int centerX, centerY;
-    int length, startAngle;
-    int radiusX, radiusY;
-
-    public Arc (int centerX, int centerY, int length, int startAngle, int radiusX, int radiusY, int rFill, int gFill, int bFill, int rDraw, int gDraw, int bDraw){
-        this.centerX = centerX;
-        this.centerY = centerY;
-        this.radiusX = radiusX;
-        this.radiusY = radiusY;
-        this.length = length;
+    int startAngle, endAngle;
+    
+    public Arc (int x, int y, int w, int h, int startAngle, int endAngle, int rFill, int gFill, int bFill, int rDraw, int gDraw, int bDraw){
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
         this.startAngle = startAngle;
+        this.endAngle = endAngle;
         this.rFill = rFill;
         this.gFill = gFill;
         this.bFill = bFill;
