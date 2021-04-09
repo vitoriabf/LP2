@@ -21,15 +21,15 @@ public class Arc extends Figure {
     }
 
     public void print () {
-        System.out.format("Arc de center (%d,%d), length (%d) e radius(%d,%d).\n",
-            this.centerX, this.centerY, this.length,this.radiusX , this.radiusY);
+        System.out.format("Arc de posiçao (%d,%d), tamanho (%d) e radius(%d,%d).\n",
+            this.x, this.y, this.w ,this.h, this.startAngle, this.endAngle);
     }
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(this.rFill,this.gFill,this.bFill));
-        g2d.fillArc(this.centerX, this.centerY, this.radiusX ,this.radiusY, this.startAngle, this.length);
+        g2d.fillArc(this.x, this.y, this.w ,this.h, this.startAngle, this.endAngle);
         g2d.setColor(new Color(this.rDraw,this.gDraw,this.bDraw));
-        g2d.drawArc(this.centerX, this.centerY, this.radiusX ,this.radiusY, this.startAngle, this.length);
+        g2d.drawArc(this.x, this.y, this.w ,this.h, this.startAngle, this.endAngle);
     }
 }
