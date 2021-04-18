@@ -18,8 +18,9 @@ class PackFrame extends JFrame {
     Random rand = new Random();
 
     Figure focus = null;
+    boolean mouseClicked = false;
+    boolean mousePressed = false;
 
-    Point figureCorner;
     Point prevPt;
 
     PackFrame () {
@@ -34,25 +35,27 @@ class PackFrame extends JFrame {
         this.setTitle("Java Packages");
         this.setSize(350, 350);
 
-        figureCorner = new Point(0,0);
-
         this.addMouseListener (
         	new MouseAdapter() {
-        		public void mousePressed (MouseEvent evt) {
+        		public void mousePressed (MouseEvent evt){
         			focus = null;
-                    prevPt = evt.getPoint();
-                    System.out.println(prevPt);
-
+        			// mousePressed = false;
+        			// mouseClicked = true;
         			for (Figure fig: figs){
-                        int width = fig.x + fig.w;
-                        int height = fig.y + fig.h;
-        				if ((evt.getX() >= fig.x && evt.getX() <= width) && (evt.getY() >= fig.y && evt.getY() <= height)){
+                        int x1 = fig.x + fig.w;
+                        int y1 = fig.y + fig.h;
+                        int x = (int)(Math.pow(evt.getX(), 2));
+                        int y = (int)(Math.pow(evt.getY(), 2));
+                        int a = (int)(Math.pow((fig.w/2),2));
+                        int b = (int)(Math.pow((fig.h/2),2));
+
+        				if ((fig.x<=evt.getX()) && (x1>=evt.getX()) && (fig.y<=evt.getY()) && (y1>=evt.getY())){
                             focus = fig;
-                            focus.print();
                         }
                     }
-        		}
-
+                    prevPt = evt.getPoint();
+                    repaint();
+                }
         	}
         );
 
@@ -60,24 +63,18 @@ class PackFrame extends JFrame {
         this.addMouseMotionListener (
         	new MouseMotionAdapter() {
         		public void mouseDragged (MouseEvent evt) {
-                    Point currentPt = evt.getPoint();
+        			if (focus != null){
+                        // mousePressed = true;
+        				Point currentPt = evt.getPoint();
 
-                    figureCorner.translate(
-                        (int)(currentPt.getX() - prevPt.getX()),
-                        (int)(currentPt.getY() - prevPt.getY())
-                    );
-                    prevPt = currentPt;
-                    repaint();
-
-                        
-                    
-           //          for (Figure fig: figs){
-
-           //              if ((evt.getX() >= fig.x && evt.getX() <= width) && (evt.getY() >= fig.y && evt.getY() <= height)) {
-           //                  fig.setLocation(fig.x+(evt.getX()), fig.y+evt.getY());
-           //                  repaint();
-           //              }
-        			// }
+	                    int dx = (int)(currentPt.getX() - prevPt.getX());
+	                    int dy = (int)(currentPt.getY() - prevPt.getY());
+	            		focus.x = (int)((focus.x) + (dx));
+	         			focus.y = (int)((focus.y) + (dy));
+	                    
+	                    prevPt = currentPt;
+	                    repaint();
+        			}
         		}
         	}
         );
@@ -139,6 +136,7 @@ class PackFrame extends JFrame {
 	    				for (int i = 0; i < figs.size(); i++) {
 	    					if (figs.get(i) == focus) {
 	    						figs.remove(figs.get(i));
+	    						focus = null;
                                 repaint();
 	    					}
 	    				}
@@ -150,14 +148,19 @@ class PackFrame extends JFrame {
 
     public void paint (Graphics g) {
         super.paint(g);
-
         for (Figure fig: this.figs) {
             fig.paint(g);
         }
-        if (focus != null) {
-             focus.x = (int)(figureCorner.getX());
-             focus.y = (int)(figureCorner.getY());
-         }
+        if (focus != null) /*&& (mouseClicked == true))*/{
+        	g.setColor(Color.red);
+        	g.drawRect(focus.x, focus.y, focus.w, focus.h);
+        	
+        }
+        /*else if ((focus != null) && (mousePressed == true)){
+        	g.setColor(Color.red);
+        	g.drawRect(focus.x, focus.y, focus.w, focus.h);
+        	focus.paint(g);
+        }*/
         
     }
 }

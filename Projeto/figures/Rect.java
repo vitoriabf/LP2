@@ -29,15 +29,4 @@ public class Rect extends Figure {
         g2d.setColor(new Color(this.rDraw,this.gDraw,this.bDraw));
         g2d.drawRect(this.x,this.y, this.w,this.h);
     }
-
-    public void setLocation(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-
-    public void theBoundingBox(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.red);
-        g2d.drawRect(this.x,this.y, this.w,this.h);
-    }
 }
