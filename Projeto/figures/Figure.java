@@ -9,4 +9,5 @@ public abstract class Figure {
     public int rDraw, gDraw, bDraw;
     public abstract void paint (Graphics g);
     public abstract void print();
+    public abstract String detected(String variable);
 }

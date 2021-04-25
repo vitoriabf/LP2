@@ -22,6 +22,11 @@ public class Rect extends Figure {
             this.w, this.h, this.x, this.y);
     }
 
+    public String detected(String variable) {
+        variable = "Rect";
+        return variable;
+    }
+
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(this.rFill,this.gFill,this.bFill));

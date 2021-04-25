@@ -24,6 +24,10 @@ public class Arc extends Figure {
         System.out.format("Arc na posição (%d,%d), tamanho (%d) e radius(%d,%d).\n",
             this.x, this.y, this.w ,this.h, this.startAngle, this.endAngle);
     }
+    public String detected(String variable) {
+        variable = "Arc";
+        return variable;
+    }
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
