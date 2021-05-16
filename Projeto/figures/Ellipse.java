@@ -6,26 +6,17 @@ import java.awt.geom.*;
 public class Ellipse extends Figure {
 
     public Ellipse (int x, int y, int w, int h, int rFill, int gFill, int bFill, int rDraw, int gDraw, int bDraw) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.rFill = rFill;
-        this.gFill = gFill;
-        this.bFill = bFill;
-        this.rDraw = rDraw;
-        this.gDraw = gDraw;
-        this.bDraw = bDraw;
+        super(x,y,w,h,rFill,gFill,bFill,rDraw,gDraw,bDraw);
     }
 
     public void print () {
         System.out.format("Elipse de tamanho (%d,%d) na posicao (%d,%d).\n",
             this.w, this.h, this.x, this.y);
     }
-    public String detected(String variable) {
-        variable = "Ellipse";
-        return variable;
+    public String typeOf() {
+        return "Ellipse";
     }
+
 
     public void paint (Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
