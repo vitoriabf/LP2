@@ -197,8 +197,10 @@ class PackFrame extends JFrame {
     public void paint (Graphics g) {
         super.paint(g);
         for (Figure fig: this.figs) {
-            fig.paint(g, fig == focus);
+            fig.paint(g, false);
         }
+
+        if (focus != null) focus.paint(g, true);
 
         // for (Button but: this.buts) {
         //     but.paint(g, but == focus_but);
