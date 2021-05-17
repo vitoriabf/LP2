@@ -15,6 +15,8 @@ class IfaceApp {
 
 class PackFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
+    // ArrayList<Button> buts = new ArrayList<Button>();
+
     Random rand = new Random();
 
     String getChecked = "null";
@@ -22,6 +24,7 @@ class PackFrame extends JFrame {
     int contRect, contArc, contLine, contEllipse, j = 0;
 
     Figure focus = null;
+    // Button focus_but = null;
     
     Point prevPt;
 
@@ -38,15 +41,16 @@ class PackFrame extends JFrame {
         this.setSize(350, 350);
         this.getContentPane().setBackground(Color.gray);
 
+        // buts.add(new Button(0, new Rect(10,20,10,10,0,0,0,0,0,0)));
+        // buts.add(new Button(1, new Ellipse(10,30,10,10,0,0,0,0,0,0)));
+        // buts.add(new Button(2, new Arc(10,40,10,10,150,180,0,0,0,0,0,0)));
+        // buts.add(new Button(3, new Line(10,50,-15,-55,0,0,0)));
 
         this.addMouseListener (
         	new MouseAdapter() {
         		public void mousePressed (MouseEvent evt){
         			focus = null;
         			for (Figure fig: figs){
-        				int x1 = fig.x + fig.w;
-        				int y1 = fig.y + fig.h;
-                        
         				if (fig.clicked(evt.getX(), evt.getY())){
                             focus = fig;
         				}
@@ -131,14 +135,11 @@ class PackFrame extends JFrame {
                         int y = rand.nextInt(350);
                         int w = rand.nextInt(50);
                         int h = rand.nextInt(50);
-                        int rFill = rand.nextInt(255);
-                        int gFill = rand.nextInt(255);
-                        int bFill = rand.nextInt(255);
                         int rDraw = rand.nextInt(255);
                         int gDraw = rand.nextInt(255);
                         int bDraw = rand.nextInt(255);
 
-                        figs.add(new Line(x,y,w,h, rFill,gFill,bFill, rDraw,gDraw,bDraw));
+                        figs.add(new Line(x,y,w,h, rDraw,gDraw,bDraw));
                         contLine +=1;
                     }
 
@@ -196,8 +197,12 @@ class PackFrame extends JFrame {
     public void paint (Graphics g) {
         super.paint(g);
         for (Figure fig: this.figs) {
-            fig.paint(g);
+            fig.paint(g, fig == focus);
         }
+
+        // for (Button but: this.buts) {
+        //     but.paint(g, but == focus_but);
+        // }
         
         g.setColor(Color.white);
         g.setFont(new Font("TimesRoman", Font.BOLD, 17));
@@ -208,10 +213,5 @@ class PackFrame extends JFrame {
         g.drawString("Line: "+contLine, 170, 50);
         g.drawString("Ellipse: "+contEllipse, 263, 50);
 
-        if (focus != null){
-        	focus.paint(g);
-        	g.setColor(Color.red);
-        	g.drawRect(focus.x, focus.y, focus.w, focus.h);
-        }
     }
 }

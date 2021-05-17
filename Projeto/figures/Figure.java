@@ -11,14 +11,11 @@ public abstract class Figure implements IVisible {
     public int rFill, gFill, bFill;
     public int rDraw, gDraw, bDraw;
 
-    public Figure (int x, int y, int w, int h, int rFill, int gFill, int bFill, int rDraw, int gDraw, int bDraw) {
+    public Figure (int x, int y, int w, int h, int rDraw, int gDraw, int bDraw) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
-        this.rFill = rFill;
-        this.gFill = gFill;
-        this.bFill = bFill;
         this.rDraw = rDraw;
         this.gDraw = gDraw;
         this.bDraw = bDraw;
@@ -28,8 +25,7 @@ public abstract class Figure implements IVisible {
         this.x += dx;
         this.y += dy;
     }
-
-    public abstract void paint (Graphics g);
+    
     public abstract void print();
     public abstract String typeOf();
 
