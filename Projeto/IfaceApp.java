@@ -13,9 +13,9 @@ class IfaceApp {
     }
 }
 
-class PackFrame extends JFrame {
+class IfaceFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
-    // ArrayList<Button> buts = new ArrayList<Button>();
+    ArrayList<Button> buts = new ArrayList<Button>();
 
     Random rand = new Random();
 
@@ -24,11 +24,11 @@ class PackFrame extends JFrame {
     int contRect, contArc, contLine, contEllipse, j = 0;
 
     Figure focus = null;
-    // Button focus_but = null;
+    Button focus_but = null;
     
     Point prevPt;
 
-    PackFrame () {
+    IfaceFrame () {
         this.addWindowListener (
             new WindowAdapter() {
                 public void windowClosing (WindowEvent e) {
@@ -41,20 +41,49 @@ class PackFrame extends JFrame {
         this.setSize(350, 350);
         this.getContentPane().setBackground(Color.gray);
 
-        // buts.add(new Button(0, new Rect(10,20,10,10,0,0,0,0,0,0)));
-        // buts.add(new Button(1, new Ellipse(10,30,10,10,0,0,0,0,0,0)));
-        // buts.add(new Button(2, new Arc(10,40,10,10,150,180,0,0,0,0,0,0)));
-        // buts.add(new Button(3, new Line(10,50,-15,-55,0,0,0)));
+        
+        buts.add(new Button(1, new Rect(300,80,5,30,0,0,0,0,0,0)));
+        buts.add(new Button(2, new Ellipse(5,20,5,5,0,0,0,0,0,0)));
+        buts.add(new Button(3, new Arc(5,5,5,30,150,180,0,0,0,0,0,0)));
+        buts.add(new Button(4, new Line(30, 190, 50, 210,0,0,0)));
+        
 
         this.addMouseListener (
         	new MouseAdapter() {
         		public void mousePressed (MouseEvent evt){
+                    if (focus_but != null){
+                        if (focus_but.idx == 1){
+                            figs.add(new Rect(evt.getX()-15,evt.getY()-15,30,30,0,0,0,0,0,0));
+                            contRect+=1;
+                        } else if (focus_but.idx == 2){
+                            figs.add(new Ellipse(evt.getX()-15,evt.getY()-15,30,30,0,0,0,0,0,0));
+                            contEllipse+=1;
+                        } else if (focus_but.idx == 3){
+                            figs.add(new Arc(evt.getX()-15,evt.getY()-15,30,30,150,180,0,0,0,0,0,0));
+                            contArc+=1;
+                        } else if (focus_but.idx == 4){
+                            figs.add(new Line(evt.getX(),evt.getY(),rand.nextInt(300),rand.nextInt(300),0,0,0));
+                            contLine+=1;
+                        }
+                    }
+
         			focus = null;
+                    focus_but = null;
+
         			for (Figure fig: figs){
         				if (fig.clicked(evt.getX(), evt.getY())){
                             focus = fig;
         				}
                     }
+
+                    for (Button but: buts){
+                        if (but.clicked(evt.getX(), evt.getY())){
+                            focus_but = but;
+                        }
+                    }
+
+                    if (focus_but != null) focus = null; else if (focus != null) focus_but = null;
+
                     prevPt = evt.getPoint();
                     repaint();
                 }
@@ -202,9 +231,9 @@ class PackFrame extends JFrame {
 
         if (focus != null) focus.paint(g, true);
 
-        // for (Button but: this.buts) {
-        //     but.paint(g, but == focus_but);
-        // }
+         for (Button but: this.buts) {
+             but.paint(g, but == focus_but);
+        }
         
         g.setColor(Color.white);
         g.setFont(new Font("TimesRoman", Font.BOLD, 17));

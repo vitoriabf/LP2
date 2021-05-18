@@ -32,6 +32,7 @@ public class Line extends Figure {
         Graphics2D g2d = (Graphics2D) g;
 
         if (focused) {
+            
             g2d.setPaint(Color.RED);
             g2d.drawLine(this.x-2,this.y-2, this.w+4,this.h+4);
         }
