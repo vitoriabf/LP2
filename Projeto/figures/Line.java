@@ -18,7 +18,10 @@ public class Line extends Figure {
         return "Line";
     }
     public boolean clicked (int x, int y){
-        return ((x >= this.x && this.w >= x && y >= this.y && this.h >= y) || (x <= this.x && this.w <= x && y <= this.y && this.h <= y));
+        return ((x >= this.x && this.w >= x && y >= this.y && this.h >= y) 
+            || (x <= this.x && this.w <= x && y >= this.y && this.h >= y) ||
+                (x >= this.x && this.w >= x && y <= this.y && this.h <= y) ||
+                (x <= this.x && this.w <= x && y <= this.y && this.h <= y));
     }
 
     public void drag (int dx, int dy) {

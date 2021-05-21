@@ -1,10 +1,10 @@
 package figures;
 
 import ivisible.IVisible;
-
+import java.io.Serializable;
 import java.awt.Graphics;
 
-public abstract class Figure implements IVisible {
+public abstract class Figure implements IVisible, Serializable {
 	public int x, y;
     public int w, h;
 
