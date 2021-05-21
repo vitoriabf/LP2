@@ -17,7 +17,7 @@ class IfaceApp {
 class IfaceFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     ArrayList<Button> buts = new ArrayList<Button>();
-    ArrayList <Integer> list = new ArrayList<Integer>();
+    ArrayList<Integer> list = new ArrayList<Integer>();
 
     Random rand = new Random();
 
