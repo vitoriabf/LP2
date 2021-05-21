@@ -17,7 +17,7 @@ class IfaceApp {
 class IfaceFrame extends JFrame {
     ArrayList<Figure> figs = new ArrayList<Figure>();
     ArrayList<Button> buts = new ArrayList<Button>();
-    ArrayList<Integer> list = new ArrayList<Integer>();
+    ArrayList <Integer> list = new ArrayList<Integer>();
 
     Random rand = new Random();
 
@@ -64,7 +64,10 @@ class IfaceFrame extends JFrame {
         this.setSize(350, 350);
         this.getContentPane().setBackground(Color.gray);
 
-        
+        //as teclas tab e shift tab são consumidas sem serem propagadas para os 
+        //KeyListeners
+        this.setFocusTraversalKeysEnabled(false);
+
 
         
         buts.add(new Button(1, new Rect(300,80,5,30,0,0,0,0,0,0)));
@@ -238,8 +241,7 @@ class IfaceFrame extends JFrame {
                         focus.gDraw = rand.nextInt(255);
                         focus.bDraw = rand.nextInt(255);
                     }
-                    else if( evt.getKeyChar() == java.awt.event.KeyEvent.VK_TAB ) {
-                    	System.out.println("Que legal!");
+                    else if( evt.getKeyChar() == java.awt.event.KeyEvent.VK_TAB) {
                     	int length = figs.size();
                     	focus = figs.get(j);
                     	j++;
