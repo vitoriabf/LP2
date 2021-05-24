@@ -23,7 +23,7 @@ class IfaceFrame extends JFrame {
 
     String getChecked = "null";
 
-    int contRect, contArc, contLine, contEllipse, j = 0;
+    int j = 0;
 
     Figure focus = null;
     Button focus_but = null;
