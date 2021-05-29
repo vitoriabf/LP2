@@ -5,7 +5,8 @@
       - Remoção no DELETE
       - Remoção ao clicar na figura e logo depois clicar no botão da lixeira. (Adicionado na parte 2)
       - Criação através das teclas "r", "e", "l" e "a". Respectivamente: Rect, Ellipse, Line e Arc.
-      - Criar figuras (alternativa ao teclado). Clicar no botão com a figura correspondente e logo após clicar na área onde deseja que seja criada.
+      - Criar figuras (alternativa ao teclado). Clicar no botão com a figura correspondente 
+      e logo após clicar na área onde deseja que seja criada.
 
     2. Propriedades ajustáveis
     3. Posição, tamanho e z-order
