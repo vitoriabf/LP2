@@ -15,24 +15,24 @@ class IfaceApp {
 }
 
 class IfaceFrame extends JFrame {
-    ArrayList<Figure> figs = new ArrayList<Figure>();
-    ArrayList<Button> buts = new ArrayList<Button>();
-    ArrayList <Integer> list = new ArrayList<Integer>();
+    private ArrayList<Figure> figs = new ArrayList<Figure>();
+    private ArrayList<Button> buts = new ArrayList<Button>();
+    private ArrayList <Integer> list = new ArrayList<Integer>();
 
-    Random rand = new Random();
+    private Random rand = new Random();
 
-    String getChecked = "null";
+    private String getChecked = "null";
 
-    int j = 0;
+    private int j = 0;
 
-    Figure focus = null;
-    Button focus_but = null;
-    Figure last_focus = null;
+    private Figure focus = null;
+    private Button focus_but = null;
+    private Figure last_focus = null;
 
-    ImageIcon imagem = new ImageIcon(getClass().getResource("img/garbage.png"));
-    Image img = imagem.getImage();
+    private ImageIcon imagem = new ImageIcon(getClass().getResource("img/garbage.png"));
+    private Image img = imagem.getImage();
     
-    Point prevPt;
+    private Point prevPt;
 
     IfaceFrame () {
         try {
@@ -140,8 +140,6 @@ class IfaceFrame extends JFrame {
                         }
                     }
                     last_focus = focus;
-
-                    
 
                     prevPt = evt.getPoint();
                     repaint();
@@ -275,13 +273,32 @@ class IfaceFrame extends JFrame {
                     	j++;
                     	if (j >= length){ j = 0; }
                     } else if ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP) && (focus != null)) {
-                        focus.y -= 10;
+
+                        if (focus.typeOf().contains("Line")){
+                            focus.y -= 10;
+                            focus.h -= 10;
+                        } else {focus.y -= 10;}
+                        
                     } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN) && (focus != null)) {
-                        focus.y += 10;
+
+                        if (focus.typeOf().contains("Line")){
+                            focus.y += 10;
+                            focus.h += 10;
+                        } else {focus.y += 10;}
+
                     } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT) && (focus != null)) {
-                        focus.x -= 10;
+
+                        if (focus.typeOf().contains("Line")){
+                            focus.x -= 10;
+                            focus.w -= 10;
+                        } else {focus.x -= 10;}
+
                     } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT) && (focus != null)) {
-                        focus.x += 10;
+
+                        if (focus.typeOf().contains("Line")){
+                            focus.x += 10;
+                            focus.w += 10;
+                        } else {focus.x += 10;}
                     }
                     repaint();
                 }
