@@ -28,9 +28,9 @@
 
 #### Pelo menos 4 figuras diferentes (Rect, Ellipse, Line e Arc)
 - Como?
-    - Lista de figuras ativas
-    - Listeners de mouse e teclado
-    - Figura em foco
+    - Lista de figuras ativas ✔️
+    - Listeners de mouse e teclado ✔️
+    - Figura em foco ✔️
 
 ## Parte (2/2)
 
