@@ -1,26 +1,28 @@
 # Editor Gráfico Vetorial (Projeto 2/2) - LP2
 
 ## Manual
+
     1. Criação e remoção
+    
       - Remoção no DELETE
       - Remoção ao clicar na figura e logo depois clicar no botão da lixeira. (Adicionado na parte 2)
       - Criação através das teclas "r", "e", "l" e "a". Respectivamente: Rect, Ellipse, Line e Arc.
       - Criar figuras (alternativa ao teclado). Clicar no botão com a figura correspondente 
-      e logo após clicar na área onde deseja que seja criada.
+      e logo após clicar na área onde deseja que seja criada. (Adicionado na parte 2)
 
     2. Propriedades ajustáveis
     3. Posição, tamanho e z-order
       - Aumentar e diminuir no "+" e "-"
       - z-order - OK!
-      - Posição arrastando com o mouse e as teclas ⇐ (esquerda), ⇑ (cima), ⇒ (direita), ⇓ (baixo).
+      - Posição arrastando com o mouse e as teclas ⇐ (esquerda), ⇑ (cima), ⇒ (direita), ⇓ (baixo). (Adicionado na parte 2)
 
     4. Cor de contorno e cor de fundo
       - Para alterar cor de fundo, apertar ","
       - Para alterar cor de contorno, apertar "."
       
     5. Outros 
-      - Gravação do estado em arquivo (proj.bin)
-      - Alternância de foco com a tecla "⇄" (TAB)
+      - Gravação do estado em arquivo (proj.bin) (Adicionado na parte 2)
+      - Alternância de foco com a tecla "⇄" (TAB) (Adicionado na parte 2)
 
 ## Parte (1/2)
 
