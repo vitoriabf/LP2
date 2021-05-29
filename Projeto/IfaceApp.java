@@ -141,7 +141,7 @@ class IfaceFrame extends JFrame {
                     }
                     last_focus = focus;
 
-                    // if (focus_but != null) focus = null; else if (focus != null) focus_but = null;
+                    
 
                     prevPt = evt.getPoint();
                     repaint();
