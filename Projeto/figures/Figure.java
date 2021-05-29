@@ -11,7 +11,7 @@ public abstract class Figure implements IVisible, Serializable {
     public int rFill, gFill, bFill;
     public int rDraw, gDraw, bDraw;
 
-    public Figure (int x, int y, int w, int h, int rDraw, int gDraw, int bDraw) {
+    protected Figure (int x, int y, int w, int h, int rDraw, int gDraw, int bDraw) {
         this.x = x;
         this.y = y;
         this.w = w;

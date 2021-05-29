@@ -27,6 +27,10 @@ class IfaceFrame extends JFrame {
 
     Figure focus = null;
     Button focus_but = null;
+    Figure last_focus = null;
+
+    ImageIcon imagem = new ImageIcon(getClass().getResource("img/garbage.png"));
+    Image img = imagem.getImage();
     
     Point prevPt;
 
@@ -74,6 +78,7 @@ class IfaceFrame extends JFrame {
         buts.add(new Button(2, new Ellipse(5,20,5,5,0,0,0,0,0,0)));
         buts.add(new Button(3, new Arc(5,5,5,30,150,180,0,0,0,0,0,0)));
         buts.add(new Button(4, new Line(30, 190, 50, 210,0,0,0)));
+        buts.add(new Button(5, new Arc(0,0,0,0,0,0,0,0,0,0,0,0)));
 
         for (int i = 0; i < 4; i++) list.add((int)(0));
         
@@ -81,7 +86,10 @@ class IfaceFrame extends JFrame {
         this.addMouseListener (
         	new MouseAdapter() {
         		public void mousePressed (MouseEvent evt){
-                    if (focus_but != null){
+                    if ((focus_but != null) &&
+                        ((56<evt.getX() || evt.getX()<24) || (216<evt.getY() || evt.getY()<64))
+                        ){
+                    	
                         if (focus_but.idx == 1){
                             figs.add(new Rect(evt.getX()-15,evt.getY()-15,30,30,0,0,0,0,0,0));
                             list.set(0, (list.get(0))+1);
@@ -96,7 +104,7 @@ class IfaceFrame extends JFrame {
                             list.set(2, (list.get(2))+1);
                         }
                     }
-
+                    
         			focus = null;
                     focus_but = null;
 
@@ -108,10 +116,30 @@ class IfaceFrame extends JFrame {
 
                     for (Button but: buts){
                         if (but.clicked(evt.getX(), evt.getY())){
-                            focus = null;
+                            //focus = null;
                             focus_but = but;
+
+                            if (focus_but.idx == 5 && last_focus != null){
+                                getChecked = last_focus.typeOf();
+
+                                if (getChecked.contains("Rect")){
+                                    list.set(0, (list.get(0))-1);
+                                } else if (getChecked.contains("Arc")){
+                                    list.set(1, (list.get(1))-1);
+                                } else if (getChecked.contains("Line")){
+                                    list.set(2, (list.get(2))-1);
+                                } else if (getChecked.contains("Ellipse")){
+                                    list.set(3, (list.get(3))-1);
+                                }
+
+                                figs.remove(last_focus);
+                                
+                            }
+                            focus = null;
+                            last_focus = null;
                         }
                     }
+                    last_focus = focus;
 
                     // if (focus_but != null) focus = null; else if (focus != null) focus_but = null;
 
@@ -246,6 +274,14 @@ class IfaceFrame extends JFrame {
                     	focus = figs.get(j);
                     	j++;
                     	if (j >= length){ j = 0; }
+                    } else if ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_UP) && (focus != null)) {
+                        focus.y -= 10;
+                    } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_DOWN) && (focus != null)) {
+                        focus.y += 10;
+                    } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT) && (focus != null)) {
+                        focus.x -= 10;
+                    } else if  ((evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT) && (focus != null)) {
+                        focus.x += 10;
                     }
                     repaint();
                 }
@@ -264,6 +300,7 @@ class IfaceFrame extends JFrame {
          for (Button but: this.buts) {
              but.paint(g, but == focus_but);
         }
+        g.drawImage(img, 26,225, null);
         
         g.setColor(Color.white);
         g.setFont(new Font("TimesRoman", Font.BOLD, 17));

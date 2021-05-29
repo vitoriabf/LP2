@@ -7,7 +7,7 @@ public class Button implements IVisible {
 	public int idx;
 	private Figure fig;
 
-	public Button (int idx, Figure fig) {
+	protected Button (int idx, Figure fig) {
 		if (fig.typeOf().contains("Line")){
 			this.idx = idx;
         	this.fig = fig;
