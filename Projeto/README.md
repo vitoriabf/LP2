@@ -7,7 +7,8 @@
       - Remoção no DELETE
       - Remoção ao clicar na figura e logo depois clicar no botão da lixeira. (Adicionado na parte 2)
       - Criação através das teclas "r", "e", "l" e "a". Respectivamente: Rect, Ellipse, Line e Arc.
-      - Se acionar a tecla "p" ativa o modo onde seram criadas figuras na posição do mouse a partir das teclas "r", "e", "l" e "a".
+      - Se acionar a tecla "p" ativa o modo onde seram criadas figuras na posição do mouse a partir das teclas. No canto inferior
+      esquerdo indica se está ativado ou não.
       - Criar figuras (alternativa ao teclado). Clicar no botão com a figura correspondente 
       e logo após clicar na área onde deseja que seja criada. (Adicionado na parte 2)
 
