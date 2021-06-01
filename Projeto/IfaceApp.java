@@ -24,29 +24,22 @@ class IfaceFrame extends JFrame {
     private String getChecked = "null";
 
     private int j = 0;
-<<<<<<< HEAD
+
     private int x1, y1;
     private Figure focus = null;
     private Button focus_but = null;
     private Figure last_focus = null;
     private Figure buttonMouse = new Ellipse (28,275,10,10,255, 0, 0,0, 0, 0);
 
-=======
-
-    private Figure focus = null;
-    private Button focus_but = null;
-    private Figure last_focus = null;
-
->>>>>>> d43031c0a3f3361bc4082ad56690f4a9351c60ea
     private ImageIcon imagem = new ImageIcon(getClass().getResource("img/garbage.png"));
     private Image img = imagem.getImage();
     
     private Point prevPt;
-<<<<<<< HEAD
+
 
     private boolean positionMouse = false;
-=======
->>>>>>> d43031c0a3f3361bc4082ad56690f4a9351c60ea
+
+
 
     IfaceFrame () {
         try {
